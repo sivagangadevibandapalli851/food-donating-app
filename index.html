@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anna Daatha | Food Sharing</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fffaf2;
+    color: #263328;
+}
+
+header {
+    background: linear-gradient(135deg, #14532d, #22a06b);
+    color: white;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+}
+
+header p {
+    margin-top: 5px;
+    color: #dcfce7;
+}
+
+.hero {
+    padding: 65px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #e7f8e9, #fff0d9);
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    color: #14532d;
+    margin-bottom: 16px;
+}
+
+.hero h1 span {
+    color: #e58b28;
+}
+
+.hero p {
+    max-width: 620px;
+    margin: auto;
+    line-height: 1.8;
+    color: #526257;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #14532d;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    background: white;
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px #163b2010;
+    border: 1px solid #e5eee4;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d4dfd4;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+}
+
+input:focus, select:focus {
+    border-color: #16a05d;
+    box-shadow: 0 0 0 3px #16a05d20;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.share-btn {
+    background: #16834a;
+    color: white;
+    margin-top: 22px;
+    width: 100%;
+}
+
+.share-btn:hover {
+    background: #106638;
+}
+
+.toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.toolbar input, .toolbar select {
+    flex: 1;
+    min-width: 180px;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.food-card {
+    background: white;
+    border: 1px solid #e6eee4;
+    border-radius: 18px;
+    padding: 23px;
+    box-shadow: 0 6px 20px #163b200b;
+    transition: 0.25s;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px #163b2017;
+}
+
+.food-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.food-card h3 {
+    color: #14532d;
+    font-size: 21px;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.food-card p {
+    margin: 9px 0;
+    color: #647067;
+    overflow-wrap: anywhere;
+}
+
+.tag {
+    display: inline-block;
+    background: #e1f7e7;
+    color: #166534;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.delete-btn {
+    background: #fff0ee;
+    color: #bd3427;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.empty {
+    text-align: center;
+    padding: 40px 15px;
+    background: white;
+    border-radius: 15px;
+    color: #647067;
+    grid-column: 1 / -1;
+    line-height: 2;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 800px;
+    margin: 30px auto 0;
+}
+
+.stat {
+    background: white;
+    padding: 20px 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #163b200b;
+}
+
+.stat h2 {
+    color: #16834a;
+    font-size: 28px;
+}
+
+.stat p {
+    font-size: 13px;
+    margin-top: 6px;
+    color: #647067;
+}
+
+footer {
+    margin-top: 65px;
+    background: #123c29;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    line-height: 2;
+}
+
+footer p {
+    color: #d1e7d7;
+}
+
+@media (max-width: 500px) {
+    header {
+        padding: 20px;
+    }
+
+    .hero {
+        padding: 45px 18px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <div class="logo">🍱 Anna Daatha</div>
+        <p>Share Food. Spread Happiness.</p>
+    </div>
+    <div>💚 Every Meal Matters</div>
+</header>
+
+<section class="hero">
+    <h1>Good Food. <span>Good Hearts.</span></h1>
+    <p>
+        Don't waste food when someone needs it.
+        Share your extra food with people in need
+        and help build a hunger-free community.
+    </p>
+
+    <div class="stats">
+        <div class="stat">
+            <h2 id="foodCount">0</h2>
+            <p>Food Listings</p>
+        </div>
+        <div class="stat">
+            <h2 id="mealCount">0</h2>
+            <p>Meals Shared*</p>
+        </div>
+        <div class="stat">
+            <h2>💚</h2>
+            <p>Care & Share</p>
+        </div>
+    </div>
+</section>
+
+<main>
+<section class="container">
+    <h2 class="section-title">🍲 Share Your Extra Food</h2>
+
+    <div class="form-card">
+        <form id="foodForm">
+            <div class="form-grid">
+                <div>
+                    <label for="dish">Food Name *</label>
+                    <input id="dish" type="text"
+                        placeholder="e.g. Vegetable Rice" required>
+                </div>
+
+                <div>
+                    <label for="location">Pickup Location *</label>
+                    <input id="location" type="text"
+                        placeholder="Enter area or address" required>
+                </div>
+
+                <div>
+                    <label for="quantity">Quantity (meals) *</label>
+                    <input id="quantity" type="number"
+                        min="1" max="10000"
+                        placeholder="e.g. 10" required>
+                </div>
+
+                <div>
+                    <label for="foodType">Food Category</label>
+                    <select id="foodType">
+                        <option value="Veg">🥗 Vegetarian</option>
+                        <option value="Non-Veg">🍗 Non-Vegetarian</option>
+                        <option value="Snacks">🍪 Snacks</option>
+                        <option value="Fruits">🍎 Fruits</option>
+                        <option value="Other">🍱 Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="contact">Contact (optional)</label>
+                    <input id="contact" type="tel"
+                        placeholder="Phone number">
+                </div>
+            </div>
+
+            <button class="share-btn" type="submit">
+                💚 Share Food Now
+            </button>
+        </form>
+    </div>
+</section>
+
+<section class="container">
+    <h2 class="section-title">🌿 Available Food</h2>
+
+    <div class="toolbar">
+        <input id="search" type="search"
+            placeholder="🔍 Search food or location...">
+
+        <select id="filter">
+            <option value="All">All Categories</option>
+            <option value="Veg">Vegetarian</option>
+            <option value="Non-Veg">Non-Vegetarian</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div id="foodList" class="food-grid"></div>
+
+    <p style="margin-top:15px;color:#647067;font-size:12px;">
+        *Meal totals are based on quantities entered by donors.
+        Listings are saved in this browser on this device.
+    </p>
+</section>
+</main>
+
+<footer>
+    <h2>🍱 Anna Daatha</h2>
+    <p>Small acts of sharing can make a big difference.</p>
+    <p>Reducing Food Waste • Helping Communities • Spreading Love</p>
+    <p>Made with 💚 for a better tomorrow</p>
+</footer>
+
+<script>
+const form = document.getElementById("foodForm");
+const foodList = document.getElementById("foodList");
+const search = document.getElementById("search");
+const filter = document.getElementById("filter");
+
+let foods = [];
+
+try {
+    foods = JSON.parse(
+        localStorage.getItem("annaDaathaFoods") || "[]"
+    );
+
+    if (!Array.isArray(foods)) foods = [];
+} catch (error) {
+    foods = [];
+}
+
+const icons = {
+    "Veg": "🥗",
+    "Non-Veg": "🍗",
+    "Snacks": "🍪",
+    "Fruits": "🍎",
+    "Other": "🍱"
+};
+
+function saveFoods() {
+    try {
+        localStorage.setItem(
+            "annaDaathaFoods",
+            JSON.stringify(foods)
+        );
+        return true;
+    } catch (error) {
+        alert("Unable to save data in this browser.");
+        return false;
+    }
+}
+
+function renderFoods() {
+    const term = search.value.trim().toLowerCase();
+    const category = filter.value;
+
+    const visibleFoods = foods.filter(food => {
+        const matchesSearch =
+            food.dish.toLowerCase().includes(term) ||
+            food.location.toLowerCase().includes(term);
+
+        const matchesCategory =
+            category === "All" || food.type === category;
+
+        return matchesSearch && matchesCategory;
+    });
+
+    document.getElementById("foodCount").textContent =
+        foods.length;
+
+    document.getElementById("mealCount").textContent =
+        foods.reduce((total, food) =>
+            total + Number(food.quantity), 0
+        );
+
+    foodList.replaceChildren();
+
+    if (visibleFoods.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = foods.length === 0
+            ? "🍽️ No food shared yet. Be the first to share!"
+            : "No matching food found. Try another search.";
+        foodList.appendChild(empty);
+        return;
+    }
+
+    visibleFoods.forEach(food => {
+        const card = document.createElement("article");
+        card.className = "food-card";
+
+        const icon = document.createElement("div");
+        icon.className = "food-icon";
+        icon.textContent = icons[food.type] || "🍱";
+
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = food.type;
+
+        const title = document.createElement("h3");
+        title.textContent = food.dish;
+
+        const location = document.createElement("p");
+        location.textContent = "📍 " + food.location;
+
+        const quantity = document.createElement("p");
+        quantity.textContent =
+            "🍽️ " + food.quantity + " meals available";
+
+        const date = document.createElement("p");
+        date.textContent = "🕒 " + food.date;
+
+        card.append(icon, tag, title, location, quantity, date);
+
+        if (food.contact) {
+            const contact = document.createElement("p");
+            contact.textContent = "📞 " + food.contact;
+            card.appendChild(contact);
+        }
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete-btn";
+        deleteButton.textContent = "Remove Listing";
+
+        deleteButton.addEventListener("click", () => {
+            if (confirm("Remove this food listing?")) {
+                const previousFoods = foods;
+                foods = foods.filter(item => item.id !== food.id);
+
+                if (saveFoods()) {
+                    renderFoods();
+                } else {
+                    foods = previousFoods;
+                }
+            }
+        });
+
+        card.appendChild(deleteButton);
+        foodList.appendChild(card);
+    });
+}
+
+form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const dish = document.getElementById("dish").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const quantity = Number(
+        document.getElementById("quantity").value
+    );
+    const type = document.getElementById("foodType").value;
+    const contact = document.getElementById("contact").value.trim();
+
+    if (!dish || !location || !Number.isInteger(quantity) ||
+        quantity < 1 || quantity > 10000) {
+        alert("Please enter valid food details.");
+        return;
+    }
+
+    if (contact && !/^[0-9+\-\s()]{7,20}$/.test(contact)) {
+        alert("Please enter a valid contact number.");
+        return;
+    }
+
+    const food = {
+        id: Date.now() + "-" + Math.random().toString(36).slice(2, 8),
+        dish,
+        location,
+        quantity,
+        type,
+        contact,
+        date: new Date().toLocaleString()
+    };
+
+    foods.unshift(food);
+
+    if (saveFoods()) {
+        form.reset();
+        renderFoods();
+
+        document.getElementById("foodList").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        alert("Food listing added successfully! 💚");
+    } else {
+        foods.shift();
+    }
+});
+
+search.addEventListener("input", renderFoods);
+filter.addEventListener("change", renderFoods);
+
+renderFoods();
+</script>
+
+</body>
+</html>
