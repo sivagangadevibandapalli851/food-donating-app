@@ -556,6 +556,9 @@ form.addEventListener("submit", event => {
     foods.unshift(food);
 
     if (saveFoods()) {
+        if (typeof window.saveFood === "function") {
+    window.saveFood(dish, quantity, location);
+}
         form.reset();
         renderFoods();
 
