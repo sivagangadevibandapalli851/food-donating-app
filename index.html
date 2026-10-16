@@ -521,7 +521,7 @@ function renderFoods() {
     });
 }
 
-form.addEventListener("submit", event => {
+form.addEventListener("submit", async event => {
     event.preventDefault();
 
     const dish = document.getElementById("dish").value.trim();
@@ -557,7 +557,7 @@ form.addEventListener("submit", event => {
 
     if (saveFoods()) {
         if (typeof window.saveFood === "function") {
-    window.saveFood(dish, quantity, location);
+    await window.saveFood(dish, quantity, location);
 }
         form.reset();
         renderFoods();
@@ -585,8 +585,6 @@ renderFoods();
     collection,
     addDoc
   } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-  const firebaseConfig = {
 const firebaseConfig = {
   apiKey: "AIzaSyAkRjAHGWP0-fOyFrzq1poc7f4B0ZU6sX4",
   authDomain: "leftover-food-sharing-ap-91bd3.firebaseapp.com",
